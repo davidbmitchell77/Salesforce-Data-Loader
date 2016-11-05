@@ -1,0 +1,8 @@
+#DatabaseColumn=SalesforceField
+ProductId=ProductCode
+Name=Name
+Category=Family
+Packaging=Packaging__c
+UPCProductCode=Universal_Product_Code__c
+UnitPrice=
+Active=IsActive

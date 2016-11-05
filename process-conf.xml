@@ -1,0 +1,151 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="csvAccountExtractProcess" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+      <description>Extracts account info from salesforce and saves info into a CSV file."</description>
+        <property name="name" value="accountExtract.csv"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\accountExtract.SOAP.log"/>
+                <entry key="sfdc.endpoint" value="https://dbmaa-dev-ed.my.salesforce.com"/>
+                <entry key="sfdc.username" value="davidbmitchell77@outlook.com"/>
+                <entry key="sfdc.password" value="4132ba1e3fc34bb015d473a2df539d36d1a08219d072d526798116f2c19c0c93b00b642dc4f845bc"/>
+                <entry key="process.encryptionKeyFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\conf\key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Account"/>
+                <entry key="sfdc.extractionRequestSize" value="500"/>
+                <entry key="sfdc.extractionSOQL">
+                  <value>
+                      SELECT Id,
+                             Name,
+                             BillingCity,
+                             BillingState
+                        FROM Account
+                       WHERE BillingCity != null
+                   </value>
+                </entry>
+                <entry key="process.operation" value="extract"/>
+                <entry key="process.mappingFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\maps\accountExtractMap.sdl"/>
+                <entry key="dataAccess.type" value="csvWrite"/>
+                <entry key="dataAccess.name" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\data\export\accountExtract.csv"/>
+                <entry key="process.enableExtractStatusOutput" value="true"/>
+                <entry key="process.outputSuccess" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\accountExtractSuccess.csv"/>
+                <entry key="process.outputError" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\accountExtractError.csv"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="dbAccountUpdateProcess" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+        <description>Gets account info from salesforce and updates or inserts info into postgreSQL database."</description>
+        <property name="name" value="dbAccountUpdate"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\dbAccountUpdate.SOAP.log"/>
+                <entry key="sfdc.endpoint" value="https://dbmaa-dev-ed.my.salesforce.com"/>
+                <entry key="sfdc.username" value="davidbmitchell77@outlook.com"/>
+                <entry key="sfdc.password" value="4132ba1e3fc34bb015d473a2df539d36d1a08219d072d526798116f2c19c0c93b00b642dc4f845bc"/>
+                <entry key="process.encryptionKeyFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\conf\key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Account"/>
+                <entry key="sfdc.extractionRequestSize" value="500"/>
+                <entry key="sfdc.extractionSOQL">
+                    <value>
+                        SELECT Id,
+                               Name,
+                               CreatedDate,
+                               CreatedBy.Name,
+                               LastModifiedDate,
+                               LastModifiedBy.Name,
+                               BillingCity,
+                               BillingState
+                          FROM Account
+                         WHERE BillingCity != null
+                      ORDER BY Name
+                         LIMIT 100
+                    </value>
+                </entry>
+                <entry key="process.operation" value="extract"/>
+                <entry key="process.mappingFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\maps\accountExtractToPostgresMap.sdl"/>
+                <entry key="dataAccess.type" value="databaseWrite"/>
+                <entry key="dataAccess.name" value="updateAccountsPostgres"/>
+                <entry key="process.enableExtractStatusOutput" value="false"/>
+                <entry key="process.outputSuccess" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\dbAccountUpdateSuccess.csv"/>
+                <entry key="process.outputError" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\dbAccountUpdateError.csv"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="dbAccountInsertProcess" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+        <description>Gets account info from salesforce and updates or inserts info into postgreSQL database."</description>
+        <property name="name" value="dbAccountInsert"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\dbAccountInsert.SOAP.log"/>
+                <entry key="sfdc.endpoint" value="https://dbmaa-dev-ed.my.salesforce.com"/>
+                <entry key="sfdc.username" value="davidbmitchell77@outlook.com"/>
+                <entry key="sfdc.password" value="4132ba1e3fc34bb015d473a2df539d36d1a08219d072d526798116f2c19c0c93b00b642dc4f845bc"/>
+                <entry key="process.encryptionKeyFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\conf\key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Account"/>
+                <entry key="sfdc.extractionRequestSize" value="500"/>
+                <entry key="sfdc.extractionSOQL">
+                    <value>
+                        SELECT Id,
+                               Name,
+                               CreatedDate,
+                               CreatedBy.Name,
+                               LastModifiedDate,
+                               LastModifiedBy.Name,
+                               BillingCity,
+                               BillingState
+                          FROM Account
+                         WHERE BillingCity != null
+                      ORDER BY Name
+                         LIMIT 100
+                    </value>
+                </entry>
+                <entry key="process.operation" value="extract"/>
+                <entry key="process.mappingFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\maps\accountExtractToPostgresMap.sdl"/>
+                <entry key="dataAccess.type" value="databaseWrite"/>
+                <entry key="dataAccess.name" value="insertAccountsPostgres"/>
+                <entry key="process.enableExtractStatusOutput" value="false"/>
+                <entry key="process.outputSuccess" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\dbAccountInsertSuccess.csv"/>
+                <entry key="process.outputError" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\dbAccountInsertError.csv"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="productUpsertProcess"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description>Gets product updates from postgreSQL database and uploads them to salesforce using 'upsert'.</description>
+        <property name="name" value="productUpsert"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\productUpsert.SOAP.log"/>
+                <entry key="sfdc.endpoint" value="https://dbmaa-dev-ed.my.salesforce.com"/>
+                <entry key="sfdc.username" value="davidbmitchell77@outlook.com"/>
+                <entry key="sfdc.password" value="4132ba1e3fc34bb015d473a2df539d36d1a08219d072d526798116f2c19c0c93b00b642dc4f845bc"/>
+                <entry key="process.encryptionKeyFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\conf\key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.externalIdField" value="Universal_Product_Code__c"/>
+                <entry key="sfdc.entity" value="Product2"/>
+                <entry key="process.operation" value="upsert"/>
+                <entry key="process.mappingFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\maps\productUpsertMap.sdl"/>
+                <entry key="dataAccess.type" value="databaseRead"/>
+                <entry key="dataAccess.name" value="upsertProductsPostgres"/>
+                <entry key="process.enableExtractStatusOutput" value="true"/>
+                <entry key="process.outputSuccess" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\productUpsertSuccess.csv"/>
+                <entry key="process.outputError" value="C:\Program Files (x86)\salesforce.com\Data Loader\orgs\dbmaa-dev-ed\logs\productUpsertError.csv"/>
+                <entry key="process.productCategory" value="%"/>
+            </map>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,189 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+<bean id="updateAccountsPostgres"
+      class="com.salesforce.dataloader.dao.database.DatabaseConfig"
+      singleton="true">
+    <property name="dataSource" ref="jdbcPostgreSQL"/>
+    <property name="sqlConfig" ref="sqlUpdateAccounts"/>
+</bean>
+
+<bean id="insertAccountsPostgres"
+      class="com.salesforce.dataloader.dao.database.DatabaseConfig"
+      singleton="true">
+    <property name="dataSource" ref="jdbcPostgreSQL"/>
+    <property name="sqlConfig" ref="sqlInsertAccounts"/>
+</bean>
+
+<bean id="upsertProductsPostgres"
+      class="com.salesforce.dataloader.dao.database.DatabaseConfig"
+      singleton="true">
+    <property name="dataSource" ref="jdbcPostgreSQL"/>
+    <property name="sqlConfig" ref="queryProductsSQL"/>
+</bean>
+
+<bean id="jdbcPostgreSQL" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="org.postgresql.Driver"/>
+    <property name="url" value="jdbc:postgresql://hard-plum.db.elephantsql.com:5432/azitfggr"/>
+    <property name="username" value="azitfggr"/>
+    <property name="password" value="FN0-RM4LLseSOqH-jbbDaegW2ab1nnrJ"/>
+</bean>
+
+<bean id="sqlUpsertAccounts"
+      class="com.salesforce.dataloader.dao.database.SqlConfig"
+      singleton="true">
+    <!-- "ON CONFLICT" feature only availaible in PostgreSQL version 9.5 and higher: -->
+    <!-- PostgreSQL versions prior to 9.5 must use separate update "UPDATE" and "INSERT" statements -->
+    <property name="sqlString">
+        <value>
+            INSERT INTO public."Accounts" (
+              "Id",
+              "Name",
+              "CreatedDate",
+              "CreatedBy",
+              "LastModifiedDate",
+              "LastModifiedBy",
+              "BillingCity",
+              "BillingState"
+            ) VALUES (
+              @Id@,
+              @Name@,
+              to_timestamp(@CreatedDate@, 'YYYY-MM-DDTHH:MI:SS.MSZ'),
+              @CreatedBy@,
+              to_timestamp(@LastModifiedDate@, 'YYYY-MM-DDTHH:MI:SS.MSZ'),
+              @LastModifiedBy@,
+              @BillingCity@,
+              @BillingState@
+            )
+            ON CONFLICT (Id) UPDATE SET
+            Name = Excluded.Name,
+            CreatedDate = Excluded.CreatedDate,
+            CreatedBy = Excluded.CreatedBy,
+            LastModifiedDate = Excluded.LastModifiedDate,
+            LastModifiedBy = Excluded.LastModifiedBy,
+            BillingCity = Excluded.BillingCity,
+            BillingState = Excluded.BillingState;
+        </value>
+    </property>
+    <property name="sqlParams">
+        <map>
+            <entry key="Id"               value="java.lang.String"/>
+            <entry key="Name"             value="java.lang.String"/>
+            <entry key="CreatedDate"      value="java.lang.Date"/>
+            <entry key="CreatedBy"        value="java.lang.String"/>
+            <entry key="LastModifiedDate" value="java.lang.Date"/>
+            <entry key="LastModifiedBy"   value="java.lang.String"/>
+            <entry key="BillingCity"      value="java.lang.String"/>
+            <entry key="BillingState"     value="java.lang.String"/>
+        </map>
+    </property>
+</bean>
+
+<bean id="sqlUpdateAccounts"
+      class="com.salesforce.dataloader.dao.database.SqlConfig"
+      singleton="true">
+    <property name="sqlString">
+        <value>
+            UPDATE public."Accounts" SET
+              "Name" = @Name@,
+              "CreatedDate" = to_timestamp(@CreatedDate@, 'YYYY-MM-DDTHH:MI:SS.MSZ'),
+              "CreatedBy" = @CreatedBy@,
+              "LastModifiedDate" = to_timestamp(@LastModifiedDate@, 'YYYY-MM-DDTHH:MI:SS.MSZ'),
+              "LastModifiedBy" = @LastModifiedBy@,
+              "BillingCity" = @BillingCity@,
+              "BillingState" = @BillingState@
+              WHERE "Id" = @Id@;
+        </value>
+    </property>
+    <property name="sqlParams">
+        <map>
+            <entry key="Id"               value="java.lang.String"/>
+            <entry key="Name"             value="java.lang.String"/>
+            <entry key="CreatedDate"      value="java.lang.Date"/>
+            <entry key="CreatedBy"        value="java.lang.String"/>
+            <entry key="LastModifiedDate" value="java.lang.Date"/>
+            <entry key="LastModifiedBy"   value="java.lang.String"/>
+            <entry key="BillingCity"      value="java.lang.String"/>
+            <entry key="BillingState"     value="java.lang.String"/>
+        </map>
+    </property>
+</bean>
+
+<bean id="sqlInsertAccounts"
+      class="com.salesforce.dataloader.dao.database.SqlConfig"
+      singleton="true">
+    <property name="sqlString">
+        <value>
+            INSERT INTO public."Accounts" (
+              "Id",
+              "Name",
+              "CreatedDate",
+              "CreatedBy",
+              "LastModifiedDate",
+              "LastModifiedBy",
+              "BillingCity",
+              "BillingState"
+            )
+            SELECT
+            @Id@,
+            @Name@,
+            to_timestamp(@CreatedDate@, 'YYYY-MM-DDTHH:MI:SS.MSZ'),
+            @CreatedBy@,
+            to_timestamp(@LastModifiedDate@, 'YYYY-MM-DDTHH:MI:SS.MSZ'),
+            @LastModifiedBy@,
+            @BillingCity@,
+            @BillingState@
+            WHERE NOT EXISTS (SELECT 1 FROM public."Accounts" WHERE "Id" = @Id@);
+        </value>
+    </property>
+    <property name="sqlParams">
+        <map>
+            <entry key="Id"               value="java.lang.String"/>
+            <entry key="Name"             value="java.lang.String"/>
+            <entry key="CreatedDate"      value="java.lang.Date"/>
+            <entry key="CreatedBy"        value="java.lang.String"/>
+            <entry key="LastModifiedDate" value="java.lang.Date"/>
+            <entry key="LastModifiedBy"   value="java.lang.String"/>
+            <entry key="BillingCity"      value="java.lang.String"/>
+            <entry key="BillingState"     value="java.lang.String"/>
+        </map>
+    </property>
+</bean>
+
+<bean id="queryProductsSQL"
+      class="com.salesforce.dataloader.dao.database.SqlConfig"
+      singleton="true">
+    <property name="sqlString">
+        <value>
+            SELECT "Id" AS "ProductId",
+                   "Name",
+                   "Category",
+                   "Packaging",
+                   "UPCProductCode",
+                   "UnitPrice",
+                   "Active"
+              FROM public."Products"
+             WHERE "Category" LIKE @process.productCategory@
+               AND "LastModifiedDate" >= (DATE(@process.lastRunDate@) - 7)
+        </value>
+    </property>
+    <property name="columnNames">
+        <list>
+            <value>ProductId</value>
+            <value>Name</value>
+            <value>Category</value>
+            <value>Packaging</value>
+            <value>UPCProductCode</value>
+            <value>UnitPrice</value>
+            <value>Active</value>
+        </list>
+    </property>
+    <property name="sqlParams">
+        <map>
+            <entry key="process.productCategory" value="java.sql.String"/>
+            <entry key="process.lastRunDate" value="java.sql.Timestamp"/>
+        </map>
+    </property>
+</bean>
+
+</beans>
