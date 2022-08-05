@@ -111,6 +111,26 @@ The following code is an example of a DatabaseConfig bean:
     <property name="sqlConfig" ref="sqlUpdateAccounts"/>
 </bean>
 ~~~
+  
+#### DataSource
+The DataSource bean sets the physical information needed for database connections. It contains the following properties:
+
+- **driverClassName** - The fully qualified name of the implementation of a JDBC driver.
+- **url** - The string for physically connecting to the database.
+- **username** - The username for logging in to the database.
+- **password** - The password for logging in to the database.
+
+Depending on your implementation, additional information may be required. For example, use org.apache.commons.dbcp.BasicDataSource when database connections are pooled.
+
+The following code is an example of a DataSource bean:  
+~~~xml
+<bean id="oracleRepDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" scope="prototype">
+    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+    <property name="url" value="jdbc:oracle:thin:@myserver.salesforce.com:1521:TEST"/>
+    <property name="username" value="test"/>
+    <property name="password" value="test"/>
+</bean>
+~~~
 When running Data Loader in batch mode from the command line, several data access objects are supported. A data access object allows access to an external data source outside of Salesforce. They can implement a read interface (DataReader), a write interface (DataWriter), or both. See the following list of object names and descriptions:  
 
 **csvRead**  
