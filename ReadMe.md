@@ -70,3 +70,16 @@ Industry=Industry
     </bean>
 </beans>
 ~~~
+
+| - | Command            |
+| - | ------------------ |
+| 4.3 | Modify the following parameters in the process-conf.xml file: |
+- sfdc.endpoint—Enter the URL of the Salesforce instance for your organization; for example, https://yourInstance.salesforce.com/.
+- sfdc.username—Enter the username Data Loader uses to log in.
+- sfdc.password—Enter the encrypted password value that you created in step 2.
+- process.mappingFile—Enter the path and file name of the mapping file.
+- dataAccess.Name—Enter the path and file name of the data file that contains the accounts that you want to import.
+- sfdc.debugMessages—Currently set to true for troubleshooting. Set to false after your import is up and running.
+- sfdc.debugMessagesFile—Enter the path and file name of the command line log file.
+- process.outputSuccess—Enter the path and file name of the success log file.
+- process.outputError—Enter the path and file name of the error log file.
