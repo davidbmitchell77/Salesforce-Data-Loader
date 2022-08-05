@@ -279,6 +279,7 @@ To start an individual batch process, use **\bin\process.bat**. The command-line
     copy config.properties from \conf.
 - **Process name** - The name of the ProcessRunner bean from \conf\process-conf.xml.
   
+Sample batch data loader command:
 ~~~
 process.bat ../conf accountMasterProcess
 ~~~
