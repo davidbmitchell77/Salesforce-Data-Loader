@@ -260,7 +260,6 @@ Phone=phone
   
 Column mapping for Salesforce upsert.  Column headers are on the left.  Salesforce fields are on the right:
 ~~~
-#DatabaseColumn=SalesforceField
 ProductId=ProductCode
 Name=Name
 Category=Family
