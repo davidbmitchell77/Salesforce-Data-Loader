@@ -227,7 +227,7 @@ The following is an exmple of an **export** SQL Configuration bean:
     </property>
 </bean>
 ~~~
-  
+___  
 ## ![salesforce](https://developer.salesforce.com/assets/svg/salesforce-cloud.svg) Mapping Columns
 
 When running Data Loader in batch mode from the command line, you must create a properties file that maps values between Salesforce and data access objects.
