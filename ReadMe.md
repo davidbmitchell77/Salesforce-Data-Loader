@@ -17,3 +17,13 @@
 | - | Command            |
 | - | ------------------ |
 | 2.1 | Enter the command: **encrypt.bat –e \<password> \<key file path>** |
+
+#### Step 3: Create the Field Mapping File
+| - | Command            |
+| - | ------------------ |
+| 3.1 | Copy the text file and save it with a name of **accountInsertMap.sdl**. |
+    #Mapping values
+    #Thu May 26 16:19:33 GMT 2011
+    Name=Name
+    NumberOfEmployees=NumberOfEmployees
+    Industry=Industry
