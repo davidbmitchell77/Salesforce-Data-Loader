@@ -52,7 +52,8 @@ Industry=Industry
                     therefore, it will not work without the key setting: 
                     process.encryptionKeyFile.
                     The password is not a valid encrypted value, 
-                    please generate the real value using the encrypt.bat utility -->
+                    please generate the real value using the encrypt.bat utility
+                -->
                 <entry key="sfdc.password" value="e8a68b73992a7a54"/>
                 <entry key="process.encryptionKeyFile" value="c:\Users\{user}\.dataloader\dataLoader.key"/>
                 <entry key="sfdc.timeoutSecs" value="600"/>
@@ -77,6 +78,7 @@ Industry=Industry
 - **sfdc.endpoint** - Enter the URL of the Salesforce instance for your organization; for example, https://yourInstance.salesforce.com/.
 - **sfdc.username** - Enter the username Data Loader uses to log in.
 - **sfdc.password** - Enter the encrypted password value that you created in step 2.
+- **process.encryptionKeyFile** - Enter the complete path to the dataloader.key file.
 - **process.mappingFile** - Enter the path and file name of the mapping file.
 - **dataAccess.Name** - Enter the path and file name of the data file that contains the accounts that you want to import.
 - **sfdc.debugMessages** - Currently set to **true** for troubleshooting. Set to **false** after your import is up and running.
