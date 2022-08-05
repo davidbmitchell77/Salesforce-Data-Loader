@@ -31,6 +31,10 @@ Industry=Industry
 ~~~
  
 #### Step 4: Create the Configuration File
+| - | Command            |
+| - | ------------------ |
+| 4.1 | Make a copy of the process-conf.xml file from the \samples\conf directory. Be sure to maintain a copy of the original because it contains examples of other types of Data Loader processing such as upserts and exports. |
+| 4.2 | Open the file in a text editor, and replace the contents with the following XML: |
 
 ~~~xml
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
