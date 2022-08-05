@@ -156,6 +156,38 @@ When running Data Loader in batch mode from the command line, the SqlConfig clas
 - **sqlParams** - A property of type map that contains descriptions of the replacement parameters specified in sqlString. Each entry represents one replacement parameter: the key is the replacement parameter's name, the value is the fully qualified Java type to be used when the parameter is set on the SQL statement. Note that “java.sql” types are sometimes required, such as java.sql.Date instead of java.util.Date. For more information, see the official JDBC API documentation.
 - **columnNames** - Used when queries (SELECT statements) return a JDBC ResultSet. Contains column names for the data outputted by executing the SQL. The column names are used to access and return the output to the caller of the DataReader interface.
   
+The following is an example of an **update** SQL configuration bean:
+~~~xml
+<bean id="sqlUpdateAccounts"
+      class="com.salesforce.dataloader.dao.database.SqlConfig"
+      singleton="true">
+    <property name="sqlString">
+        <value>
+            UPDATE public."Accounts" SET
+              "Name" = @Name@,
+              "CreatedDate" = to_timestamp(@CreatedDate@, 'YYYY-MM-DDTHH:MI:SS.MSZ'),
+              "CreatedBy" = @CreatedBy@,
+              "LastModifiedDate" = to_timestamp(@LastModifiedDate@, 'YYYY-MM-DDTHH:MI:SS.MSZ'),
+              "LastModifiedBy" = @LastModifiedBy@,
+              "BillingCity" = @BillingCity@,
+              "BillingState" = @BillingState@
+              WHERE "Id" = @Id@;
+        </value>
+    </property>
+    <property name="sqlParams">
+        <map>
+            <entry key="Id"               value="java.lang.String"/>
+            <entry key="Name"             value="java.lang.String"/>
+            <entry key="CreatedDate"      value="java.lang.Date"/>
+            <entry key="CreatedBy"        value="java.lang.String"/>
+            <entry key="LastModifiedDate" value="java.lang.Date"/>
+            <entry key="LastModifiedBy"   value="java.lang.String"/>
+            <entry key="BillingCity"      value="java.lang.String"/>
+            <entry key="BillingState"     value="java.lang.String"/>
+        </map>
+    </property>
+</bean>
+~~~
 The following is an exmple of an **export** SQL Configuration bean:
 ~~~xml
 <bean id="queryProductsSQL" class="com.salesforce.dataloader.dao.database.SqlConfig" singleton="true">
