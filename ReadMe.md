@@ -33,7 +33,7 @@ Industry=Industry
 #### Step 4: Create the Configuration File
 | - | Command            |
 | - | ------------------ |
-| 4.1 | Make a copy of the process-conf.xml file from the \samples\conf directory. Be sure to maintain a copy of the original because it contains examples of other types of Data Loader processing such as upserts and exports. |
+| 4.1 | Make a copy of the process-conf.xml file from the \samples\conf directory. ***Be sure to maintain a copy of the original*** because it contains examples of other types of Data Loader processing such as upserts and exports. |
 | 4.2 | Open the file in a text editor, and replace the contents with the following XML: |
 
 ~~~xml
@@ -237,3 +237,4 @@ Create a new mapping file and give it an extension of .sdl.  Observe the followi
 - In an export file, put the destination on the left, an equals sign (=) as a separator, and the data source on the right.
 - Data sources can be either column names or constants. Surround constants with double quotation marks.
 - You may map constants by surrounding them with double quotation marks.
+- Specify the full path to the mapping file in the **process.mappingFile** property of the **process-conf.xml** file
