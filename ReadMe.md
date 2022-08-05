@@ -62,9 +62,9 @@ Industry=Industry
                 <entry key="process.operation" value="insert"/>
                 <entry key="process.mappingFile" value="C:\DLTest\Command Line\Config\accountInsertMap.sdl"/>
                 <entry key="dataAccess.name" value="C:\DLTest\In\insertAccounts.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
                 <entry key="process.outputSuccess" value="c:\DLTest\Log\accountInsert_success.csv"/>
                 <entry key="process.outputError" value="c:\DLTest\Log\accountInsert_error.csv"/>
-                <entry key="dataAccess.type" value="csvRead"/>
                 <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
             </map>
         </property>
