@@ -151,7 +151,7 @@ Allows the reading of a database. Use database-conf.xml to configure database ac
 **databaseWrite**  
 Allows writing to a database. Use database-conf.xml to configure database access.  
 
-Data access objects are specified in the **dataAccess.type prperty** of the **process-conf.xml** file.
+Data access objects are specified in the **dataAccess.type** property of the **process-conf.xml** file.
 
 #### SQL Configuration bean
 When running Data Loader in batch mode from the command line, the SqlConfig class contains configuration parameters for accessing specific data in the database. As shown in the code samples below, queries and inserts are different but very similar. The bean must be of type com.salesforce.dataloader.dao.database.SqlConfig and have the following properties:
