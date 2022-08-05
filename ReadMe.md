@@ -251,9 +251,21 @@ BillingCity=BillingCity
 BillingState=BillingState
   ~~~
   
-Column mapping for data export.  Salesforce fields are on the left:
+Column mapping for data export to .csv file.  Salesforce fields are on the left.  Column headers are on the right:
 ~~~
 Id=account_number
 Name=name
 Phone=phone
+~~~
+  
+Column mapping for Salesforce upsert.  Column headers are on the left.  Salesforce fields are on the right:
+~~~
+#DatabaseColumn=SalesforceField
+ProductId=ProductCode
+Name=Name
+Category=Family
+Packaging=Packaging__c
+UPCProductCode=Universal_Product_Code__c
+UnitPrice=
+Active=IsActive
 ~~~
