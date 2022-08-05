@@ -1,4 +1,4 @@
-### ![salesforce](https://developer.salesforce.com/assets/svg/salesforce-cloud.svg) Data Loader Command Line Quick Start
+## ![salesforce](https://developer.salesforce.com/assets/svg/salesforce-cloud.svg) Data Loader Command Line Quick Start
 - **Step 1:** Create the encryption key
 - **Step 2:** Create the encrypted password for your login username
 - **Step 3:** Create the Field Mapping File
