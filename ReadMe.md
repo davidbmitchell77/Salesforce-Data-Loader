@@ -30,7 +30,7 @@ NumberOfEmployees=NumberOfEmployees
 Industry=Industry
 ~~~
  
-#### Step 4: Create the Configuration File
+#### Step 4: Create the Configuration File 
 
 ~~~xml
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
