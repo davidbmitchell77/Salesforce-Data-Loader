@@ -227,3 +227,14 @@ The following is an exmple of an **export** SQL Configuration bean:
     </property>
 </bean>
 ~~~
+  
+## ![salesforce](https://developer.salesforce.com/assets/svg/salesforce-cloud.svg) Mapping Columns
+
+When running Data Loader in batch mode from the command line, you must create a properties file that maps values between Salesforce and data access objects.
+Create a new mapping file and give it an extension of .sdl.  
+Observe the following syntax:
+- On each line, pair a data source with its destination.
+- In an import file, put the data source on the left, an equals sign (=) as a separator, and the destination on the right.
+- In an export file, put the destination on the left, an equals sign (=) as a separator, and the data source on the right.
+- Data sources can be either column names or constants. Surround constants with double quotation marks.
+- You may map constants by surrounding them with double quotation marks, as in:
