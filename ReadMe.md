@@ -83,3 +83,9 @@ Industry=Industry
 - sfdc.debugMessagesFile—Enter the path and file name of the command line log file.
 - process.outputSuccess—Enter the path and file name of the success log file.
 - process.outputError—Enter the path and file name of the error log file.
+
+#### Step 5: Import the Data
+| - | Command            |
+| - | ------------------ |
+| 5.1 | Copy the account data to a file name **accountInsert.csv** |
+| 5.2 | In the command prompt window, enter the following command: **process.bat "\<file path to process-conf.xml>" \<process name>**
