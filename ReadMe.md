@@ -11,4 +11,4 @@
 | **1** | Click Start **>** Run, enter **cmd** in the Open field, and click **OK**. |
 | **2** | Enter **cd \\** to navigate to the root directory of the drive where Data Loader is installed. |
 | **3** | Navigate to folder **C:\Users\{userName}\dataloader\version\bin** |
-| **4** | Create an encryption key file by entering the following command: **encrypt.bat —k [path to key file]** |
+| **4** | Create an encryption key file by entering the following command: **encrypt.bat -k** |
