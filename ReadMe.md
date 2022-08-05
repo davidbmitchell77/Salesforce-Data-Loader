@@ -158,5 +158,37 @@ When running Data Loader in batch mode from the command line, the SqlConfig clas
   
 The following is an exmple of an **export** SQL Configuration bean:
 ~~~xml
-
+<bean id="queryProductsSQL" class="com.salesforce.dataloader.dao.database.SqlConfig" singleton="true">
+    <property name="sqlString">
+        <value>
+            SELECT "Id" AS "ProductId",
+                   "Name",
+                   "Category",
+                   "Packaging",
+                   "UPCProductCode",
+                   "UnitPrice",
+                   "Active"
+              FROM public."Products"
+             WHERE "Category" LIKE @process.productCategory@
+               AND "LastModifiedDate" >= (DATE(@process.lastRunDate@) - 7)
+        </value>
+    </property>
+    <property name="columnNames">
+        <list>
+            <value>ProductId</value>
+            <value>Name</value>
+            <value>Category</value>
+            <value>Packaging</value>
+            <value>UPCProductCode</value>
+            <value>UnitPrice</value>
+            <value>Active</value>
+        </list>
+    </property>
+    <property name="sqlParams">
+        <map>
+            <entry key="process.productCategory" value="java.sql.String"/>
+            <entry key="process.lastRunDate" value="java.sql.Timestamp"/>
+        </map>
+    </property>
+</bean>
 ~~~
