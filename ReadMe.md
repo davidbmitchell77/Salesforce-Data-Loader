@@ -96,7 +96,7 @@ ___
 ## ![salesforce](https://developer.salesforce.com/assets/svg/salesforce-cloud.svg) Configure Database Access
 When running Data Loader in batch mode from the command line, several data access objects are supported. A data access object allows access to an external data source outside of Salesforce. They can implement a read interface (DataReader), a write interface (DataWriter), or both. See the following list of object names and descriptions:  
 
-**csvRead** 
+**csvRead**  
 Allows the reading of a comma or tab-delimited file. There should be a header row at the top of the file that describes each column.  
 
 **csvWrite**  
