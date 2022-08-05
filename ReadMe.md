@@ -101,11 +101,15 @@ When you run Data Loader in batch mode from the command line, use **\samples\con
 #### DatabaseConfig Bean
 The top-level database configuration object is the DatabaseConfig bean, which has the following properties:
 
-sqlConfig
-The SQL configuration bean for the data access object that interacts with a database.
-dataSource
-The bean that acts as database driver and authenticator. It must refer to an implementation of javax.sql.DataSource such as org.apache.commons.dbcp.BasicDataSource.
+- **sqlConfig** - The SQL configuration bean for the data access object that interacts with a database.  
+- **dataSource** - The bean that acts as database driver and authenticator. It must refer to an implementation of javax.sql.DataSource such as org.apache.commons.dbcp.BasicDataSource.  
+
 The following code is an example of a DatabaseConfig bean:
+~~~xml
+<bean id="AccountInsert" class="com.salesforce.dataloader.dao.database.DatabaseConfig" scope="singleton">
+    <property name="sqlConfig" ref="accountInsertSql"/>
+</bean>
+~~~
 When running Data Loader in batch mode from the command line, several data access objects are supported. A data access object allows access to an external data source outside of Salesforce. They can implement a read interface (DataReader), a write interface (DataWriter), or both. See the following list of object names and descriptions:  
 
 **csvRead**  
