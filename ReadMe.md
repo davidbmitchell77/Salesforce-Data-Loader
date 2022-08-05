@@ -239,7 +239,7 @@ Create a new mapping file and give it an extension of .sdl.  Observe the followi
 - You may map constants by surrounding them with double quotation marks.
 - Specify the full path to the mapping file in the **process.mappingFile** property of the **process-conf.xml** file
   
-Column mapping for data update/insert.  Salesforce fields are on the left:
+Column mapping for data update/insert.  Salesforce fields are on the left.  PostgreSQL fields are on the right:
 ~~~
 Id=Id
 CreatedBy.Name=CreatedBy
@@ -250,3 +250,10 @@ Name=Name
 BillingCity=BillingCity
 BillingState=BillingState
   ~~~
+  
+Column mapping for data export.  Salesforce fields are on the left:
+~~~
+Id=account_number
+Name=name
+Phone=phone
+~~~
