@@ -281,5 +281,5 @@ To start an individual batch process, use **\bin\process.bat**. The command-line
   
 Sample batch data loader command:
 ~~~
-process.bat ../conf accountMasterProcess
+process.bat ../conf accountInsert
 ~~~
