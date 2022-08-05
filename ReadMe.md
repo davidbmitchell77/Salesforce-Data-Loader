@@ -112,7 +112,7 @@ The following code is an example of a DatabaseConfig bean:
 </bean>
 ~~~
   
-#### DataSource
+#### DataSource bean
 The DataSource bean sets the physical information needed for database connections. It contains the following properties:
 
 - **driverClassName** - The fully qualified name of the implementation of a JDBC driver.
@@ -149,3 +149,9 @@ Allows the reading of a database. Use database-conf.xml to configure database ac
 
 **databaseWrite**  
 Allows writing to a database. Use database-conf.xml to configure database access.  
+
+#### SQL Configuration bean
+When running Data Loader in batch mode from the command line, the SqlConfig class contains configuration parameters for accessing specific data in the database. As shown in the code samples below, queries and inserts are different but very similar. The bean must be of type com.salesforce.dataloader.dao.database.SqlConfig and have the following properties:
+- **sqlString** - The SQL code to be used by the data access object.  The SQL can contain replacement parameters that make the string dependent on configuration or operation variables. Replacement parameters must be delimited on both sides by “@” characters. For example, @process.lastRunDate@.
+- **sqlParams** - A property of type map that contains descriptions of the replacement parameters specified in sqlString. Each entry represents one replacement parameter: the key is the replacement parameter's name, the value is the fully qualified Java type to be used when the parameter is set on the SQL statement. Note that “java.sql” types are sometimes required, such as java.sql.Date instead of java.util.Date. For more information, see the official JDBC API documentation.
+- **columnNames** - Used when queries (SELECT statements) return a JDBC ResultSet. Contains column names for the data outputted by executing the SQL. The column names are used to access and return the output to the caller of the DataReader interface.
