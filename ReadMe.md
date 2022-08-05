@@ -136,6 +136,7 @@ Versions of Data Loader from API version 25.0 onwards do not come with an Oracle
 - Download the latest JDBC driver from http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html.
 - Copy the JDBC .jar file to data loader install folder/java/bin
 
+#### Data Access Objects ( \<entry key="dataAccess.type" value="csvRead"/>** )**
 When running Data Loader in batch mode from the command line, several data access objects are supported. A data access object allows access to an external data source outside of Salesforce. They can implement a read interface (DataReader), a write interface (DataWriter), or both. See the following list of object names and descriptions:  
 
 **csvRead**  
@@ -149,6 +150,8 @@ Allows the reading of a database. Use database-conf.xml to configure database ac
 
 **databaseWrite**  
 Allows writing to a database. Use database-conf.xml to configure database access.  
+
+Data access objects are specified in the **dataAccess.type prperty** of the **process-conf.xml** file.
 
 #### SQL Configuration bean
 When running Data Loader in batch mode from the command line, the SqlConfig class contains configuration parameters for accessing specific data in the database. As shown in the code samples below, queries and inserts are different but very similar. The bean must be of type com.salesforce.dataloader.dao.database.SqlConfig and have the following properties:
