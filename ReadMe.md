@@ -5,7 +5,7 @@
 - **Step 4:** Create a process-conf.xml file that contains the import configuration settings
 - **Step 5:** Run the process and import the data
 
-#### Step One: Create the Encryption Key File
+#### Step 1: Create the Encryption Key File
 |   -   | Command |
 |   -   | ------------------ |
 | **1** | Click Start **>** Run, enter **cmd** in the Open field, and click **OK**. |
