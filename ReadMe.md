@@ -88,4 +88,9 @@ Industry=Industry
 | - | Command            |
 | - | ------------------ |
 | 5.1 | Copy the account data to a file named **accountInsert.csv** |
-| 5.2 | In the command prompt window, enter the following command: **process.bat "\<file path to process-conf.xml>" \<process name>**
+| 5.2 | In the command prompt window, enter the following command: **process.bat "\<file path to process-conf.xml>" \<process name>** |  
+
+
+___  
+#### Foobar
+## ![salesforce](https://developer.salesforce.com/assets/svg/salesforce-cloud.svg) Configure Database Access
