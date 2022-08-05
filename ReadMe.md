@@ -238,3 +238,15 @@ Create a new mapping file and give it an extension of .sdl.  Observe the followi
 - Data sources can be either column names or constants. Surround constants with double quotation marks.
 - You may map constants by surrounding them with double quotation marks.
 - Specify the full path to the mapping file in the **process.mappingFile** property of the **process-conf.xml** file
+  
+Column mapping for data update/insert.  Salesforce fields are on the left:
+~~~
+Id=Id
+CreatedBy.Name=CreatedBy
+CreatedDate=CreatedDate
+LastModifiedBy.Name=LastModifiedBy
+LastModifiedDate=LastModifiedDate
+Name=Name
+BillingCity=BillingCity
+BillingState=BillingState
+  ~~~
