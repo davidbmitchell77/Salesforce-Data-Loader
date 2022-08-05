@@ -5,6 +5,9 @@
 - **Step 4:** Create a process-conf.xml file that contains the import configuration settings
 - **Step 5:** Run the process and import the data
 
-<img src="https://developer.salesforce.com/assets/svg/salesforce-cloud.svg"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;height:100px;width:100px" />
+#### Step One: Create the Encryption Key File
+|   -   | Command |
+|   -   | ------------------ |
+| **1** | Click Start **>** Run, enter **cmd** in the Open field, and click **OK**. |
+| **2** | Enter **cd \\** to navigate to the root directory of the drive where Data Loader is installed. |
+| **3** | Navigate to folder **C:\Users\{userName}\dataloader\version\bin** |
