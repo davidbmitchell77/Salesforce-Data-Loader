@@ -124,11 +124,11 @@ Depending on your implementation, additional information may be required. For ex
 
 The following code is an example of a DataSource bean:  
 ~~~xml
-<bean id="oracleRepDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" scope="prototype">
-    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-    <property name="url" value="jdbc:oracle:thin:@myserver.salesforce.com:1521:TEST"/>
-    <property name="username" value="test"/>
-    <property name="password" value="test"/>
+<bean id="jdbcPostgreSQL" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="org.postgresql.Driver"/>
+    <property name="url" value="jdbc:postgresql://hard-plum.db.elephantsql.com:5432/azitfggr"/>
+    <property name="username" value="azitfggr"/>
+    <property name="password" value="FN0-RM4LLseSOqH-jbbDaegW2ab1nnrJ"/>
 </bean>
 ~~~
 When running Data Loader in batch mode from the command line, several data access objects are supported. A data access object allows access to an external data source outside of Salesforce. They can implement a read interface (DataReader), a write interface (DataWriter), or both. See the following list of object names and descriptions:  
