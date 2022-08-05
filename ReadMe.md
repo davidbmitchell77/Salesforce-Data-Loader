@@ -155,3 +155,8 @@ When running Data Loader in batch mode from the command line, the SqlConfig clas
 - **sqlString** - The SQL code to be used by the data access object.  The SQL can contain replacement parameters that make the string dependent on configuration or operation variables. Replacement parameters must be delimited on both sides by “@” characters. For example, @process.lastRunDate@.
 - **sqlParams** - A property of type map that contains descriptions of the replacement parameters specified in sqlString. Each entry represents one replacement parameter: the key is the replacement parameter's name, the value is the fully qualified Java type to be used when the parameter is set on the SQL statement. Note that “java.sql” types are sometimes required, such as java.sql.Date instead of java.util.Date. For more information, see the official JDBC API documentation.
 - **columnNames** - Used when queries (SELECT statements) return a JDBC ResultSet. Contains column names for the data outputted by executing the SQL. The column names are used to access and return the output to the caller of the DataReader interface.
+  
+The following is an exmple of an **export** SQL Configuration bean:
+~~~xml
+
+~~~
