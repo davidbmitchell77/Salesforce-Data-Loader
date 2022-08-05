@@ -1,4 +1,4 @@
-## ![salesforce](https://developer.salesforce.com/assets/svg/salesforce-cloud.svg) Salesforce Data Loader Command Line Quick Start
+## ![salesforce](https://developer.salesforce.com/assets/svg/salesforce-cloud.svg) Salesforce Data Loader Command Line
 - **Step 1:** Create the encryption key
 - **Step 2:** Create the encrypted password for your login username
 - **Step 3:** Create the Field Mapping File
@@ -30,7 +30,7 @@ NumberOfEmployees=NumberOfEmployees
 Industry=Industry
 ~~~
  
-#### Step 4: Create the Configuration File 
+#### Step 4: Create the Configuration File
 
 ~~~xml
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
