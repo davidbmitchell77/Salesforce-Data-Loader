@@ -276,7 +276,7 @@ To start an individual batch process, use **\bin\process.bat**. The command-line
     copy process-conf.xml from \samples\conf.
     copy database-conf.xml from \samples\conf.
     copy config.properties from \conf.
-- **Process name** - The name of the ProcessRunner bean from \conf\process-conf.xml.
+- **Process name** - The name of the ProcessRunner bean from \configs\process-conf.xml.
   
 Sample batch data loader command:
 ~~~
