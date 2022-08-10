@@ -48,12 +48,6 @@ Industry=Industry
                 <entry key="sfdc.debugMessagesFile" value="C:\DLTest\Log\accountInsertSoapTrace.log"/>
                 <entry key="sfdc.endpoint" value="https://servername.salesforce.com"/>
                 <entry key="sfdc.username" value="admin@Org.org"/>
-                <!--Password below has been encrypted using key file, 
-                    therefore, it will not work without the key setting: 
-                    process.encryptionKeyFile.
-                    The password is not a valid encrypted value, 
-                    please generate the real value using the encrypt.bat utility
-                -->
                 <entry key="sfdc.password" value="e8a68b73992a7a54"/>
                 <entry key="process.encryptionKeyFile" value="c:\Users\{user}\.dataloader\dataLoader.key"/>
                 <entry key="sfdc.timeoutSecs" value="600"/>
