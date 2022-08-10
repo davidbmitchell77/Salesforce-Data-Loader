@@ -161,9 +161,7 @@ When running Data Loader in batch mode from the command line, the SqlConfig clas
   
 The following is an example of an **update** SQL configuration bean:
 ~~~xml
-<bean id="sqlUpdateAccounts"
-      class="com.salesforce.dataloader.dao.database.SqlConfig"
-      singleton="true">
+<bean id="sqlUpdateAccounts" class="com.salesforce.dataloader.dao.database.SqlConfig" singleton="true">
     <property name="sqlString">
         <value>
             UPDATE public."Accounts" SET
