@@ -128,7 +128,8 @@ The following code is an example of a DataSource bean:
 #### Note
 Versions of Data Loader from API version 25.0 onwards do not come with an Oracle JDBC driver.  To add the Oracle JDBC driver to Data Loader:
 - Download the latest JDBC driver from http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html.
-- Copy the JDBC .jar file to data loader install folder/java/bin
+- Copy the JDBC .jar file to data loader install folder/java/bin.
+- Update the process.bat file CLASSPATH (-cp) parameter by appendin a semi-colon and full path to the orable jdbc .jar file.
 
 #### Data Access Objects ( \<entry key="dataAccess.type" value="csvRead"/>** )**
 When running Data Loader in batch mode from the command line, several data access objects are supported. A data access object allows access to an external data source outside of Salesforce. They can implement a read interface (DataReader), a write interface (DataWriter), or both. See the following list of object names and descriptions:  
