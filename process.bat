@@ -36,7 +36,6 @@ set CLASSPATH=%CLASSPATH%..\dataloader-%DATALOADER_VERSION%-uber.jar
 set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\bin\mssql-jdbc-11.2.0.jre18.jar
 set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\bin\ojdbc11.jar
 set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\bin\postgresql-42.4.1.jar
-set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\bin\salesforce-jdbc-1.1-20180403.104727-1-single.jar
 echo CLASSPATH="%CLASSPATH%"
 
 IF "%JAVA_HOME%" == "" (
