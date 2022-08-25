@@ -262,6 +262,8 @@ Active=IsActive
 ~~~
 ___
 ## ![salesforce](https://developer.salesforce.com/assets/svg/salesforce-cloud.svg) Run Individual Batch Processes
+**IMPORTANT**: Set the system environment variable DATALOADER_JAVA_HOME to C:\Program Files\Java\jdk-18.  
+  
 To start an individual batch process, use **\bin\process.bat**. The command-line requires the following parameters.
 
 - **Configuration directory** - The default is \conf.  To use an alternate directory, create a directory and add the following files to it:
